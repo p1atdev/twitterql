@@ -8,15 +8,16 @@ import { getUserByScreenName, getUserByRestId } from "../src/twitter/mod.ts"
 // await getTweetDetail()
 
 const userByScreenName = await getUserByScreenName({
-    screen_name: "revoltchat",
+    screen_name: "p1atdev",
     withSafetyModeUserFields: true,
     withSuperFollowsUserFields: true,
 })
 
 const userByRestId = await getUserByRestId({
-    userId: userByScreenName.data.user.result.id,
-    withSafetyModeUserFields: false,
+    userId: userByScreenName.data.user.result.restID,
+    withSafetyModeUserFields: true,
     withSuperFollowsUserFields: true,
 })
 
 console.log(userByScreenName)
+console.log(userByRestId)
