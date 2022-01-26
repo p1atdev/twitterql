@@ -1,0 +1,145 @@
+{
+    "data": {
+        "user": {
+            "result": {
+                "__typename": "User",
+                "id": "VXNlcjoxMTMyMDI2MTY4NTkxNDQxOTIx",
+                "rest_id": "1132026168591441921",
+                "affiliates_highlighted_label": {},
+                "has_nft_avatar": false,
+                "legacy": {
+                    "created_at": "Fri May 24 20:50:45 +0000 2019",
+                    "default_profile": false,
+                    "default_profile_image": false,
+                    "description": "Don't bother with chat apps that don't respect your privacy – use Revolt.",
+                    "entities": {
+                        "description": {
+                            "urls": []
+                        },
+                        "url": {
+                            "urls": [
+                                {
+                                    "display_url": "revolt.chat",
+                                    "expanded_url": "http://revolt.chat",
+                                    "url": "https://t.co/gYQ9wrxL6E",
+                                    "indices": [0, 23]
+                                }
+                            ]
+                        }
+                    },
+                    "fast_followers_count": 0,
+                    "favourites_count": 1,
+                    "followers_count": 753,
+                    "friends_count": 1,
+                    "has_custom_timelines": false,
+                    "is_translator": false,
+                    "listed_count": 1,
+                    "location": "hello@revolt.chat",
+                    "media_count": 10,
+                    "name": "Revolt",
+                    "normal_followers_count": 753,
+                    "pinned_tweet_ids_str": ["1478098165517668359"],
+                    "profile_banner_extensions": {
+                        "mediaColor": {
+                            "r": {
+                                "ok": {
+                                    "palette": [
+                                        {
+                                            "percentage": 94.48,
+                                            "rgb": {
+                                                "blue": 35,
+                                                "green": 24,
+                                                "red": 16
+                                            }
+                                        },
+                                        {
+                                            "percentage": 4.2,
+                                            "rgb": {
+                                                "blue": 54,
+                                                "green": 43,
+                                                "red": 111
+                                            }
+                                        },
+                                        {
+                                            "percentage": 0.78,
+                                            "rgb": {
+                                                "blue": 193,
+                                                "green": 189,
+                                                "red": 187
+                                            }
+                                        },
+                                        {
+                                            "percentage": 0.25,
+                                            "rgb": {
+                                                "blue": 64,
+                                                "green": 51,
+                                                "red": 153
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "profile_banner_url": "https://pbs.twimg.com/profile_banners/1132026168591441921/1618758405",
+                    "profile_image_extensions": {
+                        "mediaColor": {
+                            "r": {
+                                "ok": {
+                                    "palette": [
+                                        {
+                                            "percentage": 85.68,
+                                            "rgb": {
+                                                "blue": 35,
+                                                "green": 24,
+                                                "red": 16
+                                            }
+                                        },
+                                        {
+                                            "percentage": 12.57,
+                                            "rgb": {
+                                                "blue": 84,
+                                                "green": 70,
+                                                "red": 255
+                                            }
+                                        },
+                                        {
+                                            "percentage": 1.2,
+                                            "rgb": {
+                                                "blue": 47,
+                                                "green": 34,
+                                                "red": 86
+                                            }
+                                        },
+                                        {
+                                            "percentage": 0.53,
+                                            "rgb": {
+                                                "blue": 64,
+                                                "green": 49,
+                                                "red": 148
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1382789890224586752/CBk5XnYL_normal.jpg",
+                    "profile_interstitial_type": "",
+                    "protected": false,
+                    "screen_name": "revoltchat",
+                    "statuses_count": 24,
+                    "translator_type": "none",
+                    "url": "https://t.co/gYQ9wrxL6E",
+                    "verified": false,
+                    "withheld_in_countries": []
+                },
+                "super_follow_eligible": false,
+                "super_followed_by": false,
+                "super_following": false,
+                "legacy_extended_profile": {},
+                "is_profile_translatable": false
+            }
+        }
+    }
+}
