@@ -5,7 +5,7 @@ import { UserByScreenNameRes } from "../../types/response/user_by_screen_name.ts
 
 export const getUserByScreenName = async (variables: UserByScreenNameParam) => {
     const res = await TQLRequest(UserByScreenName, variables)
-    console.log(res)
+    // console.log(res)
 
     const response: UserByScreenNameRes = await res.json()
     return response

@@ -15,21 +15,21 @@ export interface User {
 export interface Result {
     typename: string
     id: string
-    restID: string
-    affiliatesHighlightedLabel: AffiliatesHighlightedLabel
-    hasNftAvatar: boolean
+    rest_id: string
+    affiliates_highlighted_label: AffiliatesHighlightedLabel
+    has_nft_avatar: boolean
     legacy: Legacy
-    superFollowEligible: boolean
-    superFollowedBy: boolean
-    superFollowing: boolean
-    legacyExtendedProfile: AffiliatesHighlightedLabel
-    isProfileTranslatable: boolean
+    super_follow_eligible: boolean
+    super_followed_by: boolean
+    super_following: boolean
+    legacy_extended_profile: AffiliatesHighlightedLabel
+    is_profile_translatable: boolean
 }
 
 export interface AffiliatesHighlightedLabel {}
 
 export interface Legacy {
-    createdAt: string
+    created_at: string
     defaultProfile: boolean
     defaultProfileImage: boolean
     description: string

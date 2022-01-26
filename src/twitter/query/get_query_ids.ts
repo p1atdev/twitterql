@@ -9,8 +9,6 @@ export const getQueryIds = async () => {
     // const links = htmlText.match(/https:\/\/abs\.twimg\.com\/responsive-web\/client-web([^\/]+|)\/main\.[^.]+\.js/g)
     const links = htmlText.match(/https:\/\/abs\.twimg\.com\/responsive-web\/client-web([^\/]+|)\/main\.[^.]+\.js/g)
 
-    console.log(links)
-
     // if mainJsURLs is null, return empty array
     if (links === null) {
         return []

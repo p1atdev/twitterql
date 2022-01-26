@@ -23,6 +23,8 @@ const QLRequest = async (endpoint: Endpoint, variables: Variables, guestToken: s
         "x-guest-token": guestToken,
     }
 
+    console.log(headers)
+
     try {
         const variableJSON = JSON.stringify(variables)
         url.search = new URLSearchParams({ variables: variableJSON }).toString()

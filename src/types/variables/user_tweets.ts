@@ -1,9 +1,8 @@
 import { Variables } from "../endpoint.ts"
 
-export default interface UserTweetsParam extends Variables {
+export interface UserTweetsParam extends Variables {
     userId: string
     count: number
-    cursor: string // "HCaAgIDk9bSRnykAAA=="
     includePromotedContent: boolean //true
     withQuickPromoteEligibilityTweetFields: boolean //true
     withSuperFollowsUserFields: boolean //true
