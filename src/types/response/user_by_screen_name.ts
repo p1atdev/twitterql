@@ -13,7 +13,7 @@ export interface User {
 }
 
 export interface Result {
-    typename: string
+    __typename: string
     id: string
     rest_id: string
     affiliates_highlighted_label: AffiliatesHighlightedLabel
@@ -30,34 +30,34 @@ export interface AffiliatesHighlightedLabel {}
 
 export interface Legacy {
     created_at: string
-    defaultProfile: boolean
-    defaultProfileImage: boolean
+    default_profile: boolean
+    default_profile_image: boolean
     description: string
     entities: Entities
-    fastFollowersCount: number
-    favouritesCount: number
-    followersCount: number
-    friendsCount: number
-    hasCustomTimelines: boolean
-    isTranslator: boolean
-    listedCount: number
+    fast_followers_count: number
+    favourites_count: number
+    followers_count: number
+    friends_count: number
+    has_custom_timelines: boolean
+    is_translator: boolean
+    listed_count: number
     location: string
-    mediaCount: number
+    media_count: number
     name: string
-    normalFollowersCount: number
-    pinnedTweetIDSStr: string[]
-    profileBannerExtensions: ProfileExtensions
-    profileBannerURL: string
-    profileImageExtensions: ProfileExtensions
-    profileImageURLHTTPS: string
-    profileInterstitialType: string
+    normal_followers_count: number
+    pinned_tweet_ids_str: string[]
+    profile_banner_extensions: ProfileExtensions
+    profile_banner_url: string
+    profile_image_extensions: ProfileExtensions
+    profile_image_url_https: string
+    profile_interstitial_type: string
     protected: boolean
-    screenName: string
-    statusesCount: number
-    translatorType: string
+    screen_name: string
+    statuses_count: number
+    translator_type: string
     url: string
     verified: boolean
-    withheldInCountries: any[]
+    withheld_in_countries: any[]
 }
 
 export interface Entities {
@@ -70,8 +70,8 @@ export interface Description {
 }
 
 export interface URL {
-    displayURL: string
-    expandedURL: string
+    display_url: string
+    expanded_url: string
     url: string
     indices: number[]
 }
