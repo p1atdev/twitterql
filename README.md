@@ -7,7 +7,7 @@ The unofficial twitter graphql api sdk.
 ```ts
 // ./twitter.ts
 
-import { getUserTweets, getUserByScreenName } from "https://deno.land/x/twitterql@0.0.2/src/twitter/mod.ts"
+import { getUserTweets, getUserByScreenName } from "https://deno.land/x/twitterql@0.0.7/src/twitter/mod.ts"
 
 const userByScreenName = await getUserByScreenName({
     screen_name: "twitter",

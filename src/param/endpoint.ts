@@ -47,6 +47,17 @@ export const UsersVerifiedAvatars: Endpoint = {
 }
 
 /**
+ * Tweet Detail
+ * @param {Endpoint}
+ */
+export const TweetDetail: Endpoint = {
+    host: GraphQLHost,
+    operationName: "TweetDetail",
+    method: "GET",
+    needAuth: true,
+}
+
+/**
  * Guest token
  * @type {Endpoint}
  */
