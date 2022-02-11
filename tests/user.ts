@@ -9,15 +9,11 @@ import { getUserByScreenName, getUserByRestId } from "../src/twitter/mod.ts"
 
 const userByScreenName = await getUserByScreenName({
     screen_name: "p1atdev",
-    withSafetyModeUserFields: true,
-    withSuperFollowsUserFields: true,
 })
 
 const userByRestId = await getUserByRestId({
     userId: userByScreenName.data.user.result.rest_id,
-    withSafetyModeUserFields: true,
-    withSuperFollowsUserFields: true,
 })
 
-console.log(userByScreenName)
-console.log(userByRestId)
+console.dir(userByScreenName)
+console.dir(userByRestId)

@@ -8,4 +8,4 @@ const avatars = await getUsersVerifiedAvatars({
     userIds: [user.data.user.result.rest_id],
 })
 
-console.dir(avatars, { depth: 9999 })
+console.dir(avatars, { depth: Number.MAX_SAFE_INTEGER })
