@@ -5,6 +5,6 @@ import { Variables } from "../endpoint.ts"
  */
 export interface UserByScreenNameParam extends Variables {
     screen_name: string // "revoltchat"
-    withSafetyModeUserFields: boolean // true
-    withSuperFollowsUserFields: boolean // true
+    withSafetyModeUserFields?: boolean // true
+    withSuperFollowsUserFields?: boolean // true
 }

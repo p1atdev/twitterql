@@ -34,6 +34,13 @@ export const UserTweets: Endpoint = {
     needAuth: true,
 }
 
+export const UsersVerifiedAvatars: Endpoint = {
+    host: GraphQLHost,
+    operationName: "UsersVerifiedAvatars",
+    method: "GET",
+    needAuth: true,
+}
+
 /**
  * Guest token
  * @type {Endpoint}

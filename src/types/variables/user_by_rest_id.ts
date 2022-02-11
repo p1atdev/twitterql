@@ -5,6 +5,6 @@ import { Variables } from "../endpoint.ts"
  */
 export interface UserByRestIdParam extends Variables {
     userId: string // "1132026168591441921"
-    withSafetyModeUserFields: boolean // true
-    withSuperFollowsUserFields: boolean // true
+    withSafetyModeUserFields?: boolean // true
+    withSuperFollowsUserFields?: boolean // true
 }
