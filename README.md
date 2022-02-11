@@ -4,7 +4,9 @@ The unofficial twitter graphql api sdk.
 
 # Example
 
-```ts:twitter.ts
+```ts
+// ./twitter.ts
+
 import { getUserTweets, getUserByScreenName } from "https://deno.land/x/twitterql@0.0.2/src/twitter/mod.ts"
 
 const userByScreenName = await getUserByScreenName({
@@ -22,7 +24,7 @@ console.dir(tweets, { depth: 10 })
 ```
 
 ```bash
-deno run --allow-net --unstable twitter.ts
+deno run --allow-net --unstable ./twitter.ts
 ```
 
 Results:
