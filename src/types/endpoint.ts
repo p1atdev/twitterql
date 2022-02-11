@@ -14,5 +14,5 @@ export type Host = {
     host: string
 }
 
-export type APIType = "v1.1" | "v2" | "gql"
+export type APIType = "v1.1" | "v2" | "gql" | "i"
 export type Method = "GET" | "POST" | "DELETE" | "PUT" | "PATCH" | "HEAD" | "OPTIONS"

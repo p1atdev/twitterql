@@ -1,5 +1,5 @@
 import { Endpoint } from "../types/mod.ts"
-import { LegacyHost, v2Host, GraphQLHost } from "./url.ts"
+import { LegacyHost, v2Host, GraphQLHost, iHost } from "./url.ts"
 
 /**
  * User name by screen name endpoint
@@ -34,6 +34,11 @@ export const UserTweets: Endpoint = {
     needAuth: true,
 }
 
+/**
+ * User verified avatars endpoint
+ * よくわからない
+ * @param {Endpoint}
+ */
 export const UsersVerifiedAvatars: Endpoint = {
     host: GraphQLHost,
     operationName: "UsersVerifiedAvatars",
@@ -50,4 +55,15 @@ export const GuestToken: Endpoint = {
     path: "/guest/activate.json",
     method: "POST",
     needAuth: false,
+}
+
+/**
+ * If a user name is registered or not
+ * @type {Endpoint}
+ */
+export const UserNameAvailable: Endpoint = {
+    host: iHost,
+    path: "/users/username_available.json",
+    method: "GET",
+    needAuth: true,
 }

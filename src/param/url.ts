@@ -23,3 +23,11 @@ export const v2Host: Host = {
     type: "v2",
     host: "https://api.twitter.com/2",
 }
+
+/**
+ * Twitter Miscellaneous API's host
+ */
+export const iHost: Host = {
+    type: "i",
+    host: "https://twitter.com/i/api/i",
+}
