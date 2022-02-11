@@ -20,6 +20,7 @@ const tweets = await getUserTweets({
 
 console.dir(tweets, { depth: 10 })
 ```
+
 ```bash
 deno run --allow-net --unstable twitter.ts
 ```
