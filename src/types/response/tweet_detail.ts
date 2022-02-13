@@ -6,6 +6,7 @@ export interface TweetDetailRes extends TQLResponse {
 
 export interface Data {
     threaded_conversation_with_injections?: ThreadedConversationWithInjections
+    threaded_conversation_with_injections_v2: ThreadedConversationWithInjectionsV2
 }
 
 export interface ThreadedConversationWithInjections {
@@ -361,4 +362,68 @@ export interface ItemItemContent {
 
 export enum ItemType {
     TimelineTweet = "TimelineTweet",
+}
+
+export interface ThreadedConversationWithInjectionsV2 {
+    instructions: V2Instruction[]
+    metadata: V2Metadata
+}
+
+export interface V2Instruction {
+    type: string
+    entries?: V2Entry[]
+    direction?: string
+}
+
+export interface V2Entry {
+    entryId: string
+    sortIndex: string
+    content: V2Content
+}
+
+export interface V2Content {
+    entryType: V2EntryType
+    itemContent?: V2ItemContent
+    items?: V2Item[]
+    displayType?: string
+    clientEventInfo?: V2ClientEventInfo
+}
+
+export interface V2ClientEventInfo {
+    details: V2Details
+}
+
+export interface V2Details {
+    conversationDetails: string[]
+}
+
+export enum V2EntryType {
+    TimelineTimelineItem = "TimelineTimelineItem",
+    TimelineTimelineModule = "TimelineTimelineModule",
+}
+
+export interface V2ItemContent {
+    itemType: string
+    tweet_results?: V2TweetResults
+    tweetDisplayType?: string
+    hasModeratedReplies?: boolean
+    value?: string
+    cursorType?: string
+}
+
+export interface V2TweetResults {
+    result: string[]
+}
+
+export interface V2Item {
+    entryId: string
+    item: string[]
+}
+
+export interface V2Metadata {
+    reader_mode_config: V2ReaderModeConfig
+}
+
+export interface V2ReaderModeConfig {
+    is_reader_mode_available: boolean
 }
