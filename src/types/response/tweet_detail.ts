@@ -129,7 +129,7 @@ export interface PurpleLegacy {
     has_custom_timelines?: boolean
     is_translator?: boolean
     listed_count?: number
-    location?: Location
+    location?: string
     media_count?: number
     muting?: boolean
     name?: string
@@ -163,12 +163,6 @@ export interface URL {
     expanded_url?: string
     url?: string
     indices?: number[]
-}
-
-export enum Location {
-    Empty = "",
-    埼玉 = "埼玉 ",
-    東京新宿区 = "東京 新宿区",
 }
 
 export interface ProfileExtensions {
@@ -233,7 +227,7 @@ export interface FluffyLegacy {
     source?: string
     user_id_str?: string
     id_str?: string
-    in_reply_to_screen_name?: ScreenName
+    in_reply_to_screen_name?: string
     in_reply_to_status_id_str?: string
     in_reply_to_user_id_str?: string
 }
@@ -315,17 +309,9 @@ export enum Resize {
 
 export interface UserMention {
     id_str?: string
-    name?: Name
-    screen_name?: ScreenName
+    name?: string
+    screen_name?: string
     indices?: number[]
-}
-
-export enum Name {
-    ぱいなっぷるゲーミングPC = "ぱいなっぷる@ゲーミングPC",
-}
-
-export enum ScreenName {
-    Cherry20401127 = "Cherry20401127",
 }
 
 export interface ExtendedEntities {
