@@ -10,6 +10,7 @@ export const UserByScreenName: Endpoint = {
     operationName: "UserByScreenName",
     method: "GET",
     needAuth: true,
+    needOAuth: false,
 }
 
 /**
@@ -21,6 +22,7 @@ export const UserByRestId: Endpoint = {
     operationName: "UserByRestId",
     method: "GET",
     needAuth: true,
+    needOAuth: false,
 }
 
 /**
@@ -32,6 +34,7 @@ export const UserTweets: Endpoint = {
     operationName: "UserTweets",
     method: "GET",
     needAuth: true,
+    needOAuth: false,
 }
 
 /**
@@ -44,10 +47,23 @@ export const UsersVerifiedAvatars: Endpoint = {
     operationName: "UsersVerifiedAvatars",
     method: "GET",
     needAuth: true,
+    needOAuth: false,
 }
 
 /**
- * Tweet Detail
+ * Biz profile fetch user
+ * @param {Endpoint}
+ */
+export const BizProfileFetchUser: Endpoint = {
+    host: GraphQLHost,
+    operationName: "BizProfileFetchUser",
+    method: "GET",
+    needAuth: true,
+    needOAuth: false,
+}
+
+/**
+ * Tweet detail
  * @param {Endpoint}
  */
 export const TweetDetail: Endpoint = {
@@ -55,6 +71,31 @@ export const TweetDetail: Endpoint = {
     operationName: "TweetDetail",
     method: "GET",
     needAuth: true,
+    needOAuth: false,
+}
+
+/**
+ * Fetch scheduled tweets
+ * @param {Endpoint}
+ */
+export const FetchScheduledTweets: Endpoint = {
+    host: GraphQLHost,
+    operationName: "FetchScheduledTweets",
+    method: "GET",
+    needAuth: true,
+    needOAuth: true,
+}
+
+/**
+ * Fetch draft tweets
+ * @param {Endpoint}
+ */
+export const FetchDraftTweets: Endpoint = {
+    host: GraphQLHost,
+    operationName: "FetchDraftTweets",
+    method: "GET",
+    needAuth: true,
+    needOAuth: true,
 }
 
 /**
@@ -66,6 +107,29 @@ export const GuestToken: Endpoint = {
     path: "/guest/activate.json",
     method: "POST",
     needAuth: false,
+    needOAuth: false,
+}
+
+/**
+ * Trusted DM inbox
+ */
+export const DMInboxTimelineTrusted: Endpoint = {
+    host: LegacyHost,
+    path: "/dm/inbox_timeline/trusted.json",
+    method: "GET",
+    needAuth: true,
+    needOAuth: true,
+}
+
+/**
+ * Untrusted DM inbox
+ */
+export const DMInboxTimelineUntrusted: Endpoint = {
+    host: LegacyHost,
+    path: "/dm/inbox_timeline/untrusted.json",
+    method: "GET",
+    needAuth: true,
+    needOAuth: true,
 }
 
 /**
@@ -77,6 +141,7 @@ export const SearchTypehead: Endpoint = {
     path: "/search/typeahead.json",
     method: "GET",
     needAuth: true,
+    needOAuth: false,
 }
 
 /**
@@ -88,4 +153,5 @@ export const UserNameAvailable: Endpoint = {
     path: "/users/username_available.json",
     method: "GET",
     needAuth: true,
+    needOAuth: false,
 }

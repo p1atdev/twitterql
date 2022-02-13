@@ -6,6 +6,7 @@ export type Endpoint = {
     variables?: Variables
     method: Method
     needAuth: boolean
+    needOAuth: boolean
     operationName?: string
 }
 

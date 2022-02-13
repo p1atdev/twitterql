@@ -1,7 +1,7 @@
 import { getUserTweets, getUserByScreenName } from "../src/twitter/mod.ts"
 
 const userByScreenName = await getUserByScreenName({
-    screen_name: "twitter",
+    screen_name: "Nintendo",
 })
 
 console.log(userByScreenName)
