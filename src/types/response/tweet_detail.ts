@@ -413,7 +413,7 @@ export interface V2ItemContent {
 }
 
 export interface V2TweetResults {
-    result: V2TweetResultsResult[]
+    result: V2TweetResultsResult
 }
 
 export interface V2Item {
