@@ -5,7 +5,7 @@ export interface UserByScreenNameRes extends TQLResponse {
 }
 
 export interface Data {
-    user: User
+    user?: User
 }
 
 export interface User {
