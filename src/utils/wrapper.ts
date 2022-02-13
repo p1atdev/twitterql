@@ -34,7 +34,7 @@ const QLRequest = async (endpoint: Endpoint, variables: Variables, OAuthToken?: 
         headers["cookie"] = `auth_token=${OAuthToken}`
     }
 
-    console.log(headers)
+    // console.log(headers)
 
     try {
         const variableJSON = JSON.stringify(variables)
@@ -60,20 +60,24 @@ const LegacyRequest = async (endpoint: Endpoint, variables?: Variables, OAuthTok
         headers["x-guest-token"] = guestToken
     }
 
-    // const query = (() => {
-    //     if (variables) {
-    //         // set query params
-    //         const queryParams = new URLSearchParams()
-    //         Object.entries(variables).forEach(([key, value]) => {
-    //             queryParams.set(key, value)
-    //         })
-    //         return `?${queryParams.toString()}`
-    //     } else {
-    //         return ""
-    //     }
-    // })()
+    const query = (() => {
+        if (variables) {
+            // set query params
+            const queryParams = new URLSearchParams()
+            Object.entries(variables).forEach(([key, value]) => {
+                queryParams.set(key, value)
+            })
+            return `?${queryParams.toString()}`
+        } else {
+            return ""
+        }
+    })()
 
-    const url = endpoint.host.host + endpoint.path //+ query
+    // console.log(headers)
+
+    const url = endpoint.host.host + endpoint.path + query
+
+    // console.log(url)
 
     try {
         const res = await fetch(url, {
