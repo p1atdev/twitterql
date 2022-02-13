@@ -400,6 +400,7 @@ export interface V2Details {
 export enum V2EntryType {
     TimelineTimelineItem = "TimelineTimelineItem",
     TimelineTimelineModule = "TimelineTimelineModule",
+    TimelineTweet = "TimelineTweet",
 }
 
 export interface V2ItemContent {
@@ -412,7 +413,7 @@ export interface V2ItemContent {
 }
 
 export interface V2TweetResults {
-    result: string[]
+    result: V2TweetResultsResult[]
 }
 
 export interface V2Item {
