@@ -38,6 +38,18 @@ export const UserTweets: Endpoint = {
 }
 
 /**
+ * User tweets and replies endpoint
+ * @param {Endpoint}
+ */
+export const UserTweetsAndReplies: Endpoint = {
+    host: GraphQLHost,
+    operationName: "UserTweetsAndReplies",
+    method: "GET",
+    needAuth: true,
+    needOAuth: false,
+}
+
+/**
  * User verified avatars endpoint
  * よくわからない
  * @param {Endpoint}

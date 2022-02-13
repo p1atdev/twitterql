@@ -8,11 +8,11 @@ import { getUserByScreenName, getUserByRestId } from "../src/twitter/mod.ts"
 // await getTweetDetail()
 
 const userByScreenName = await getUserByScreenName({
-    screen_name: "p1atdev",
+    screen_name: "deno_land",
 })
 
 const userByRestId = await getUserByRestId({
-    userId: userByScreenName.data.user.result.rest_id,
+    userId: userByScreenName.data.user!.result.rest_id,
 })
 
 console.dir(userByScreenName)
