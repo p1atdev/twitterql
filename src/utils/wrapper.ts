@@ -10,7 +10,7 @@ import { getQueryIds } from "../twitter/query/get_query_ids.ts"
  * @param guestToken
  * @returns
  */
-const QLRequest = async (endpoint: Endpoint, variables: Variables) => {
+const QLRequest = async (endpoint: Endpoint, variables: Variables, OAuthToken?: string) => {
     // first get query ids
     const queries = await getQueryIds()
     // get the corresponding query id
@@ -25,6 +25,13 @@ const QLRequest = async (endpoint: Endpoint, variables: Variables) => {
     if (endpoint.needAuth) {
         const guestToken = await getGuestToken()
         headers["x-guest-token"] = guestToken
+    }
+
+    if (endpoint.needOAuth) {
+        if (!OAuthToken) {
+            throw Error(`Endpoint ${endpoint.operationName} needs OAuth Token.`)
+        }
+        headers["cookie"] = `auth_token=${OAuthToken}`
     }
 
     console.log(headers)
@@ -43,7 +50,7 @@ const QLRequest = async (endpoint: Endpoint, variables: Variables) => {
     }
 }
 
-const LegacyRequest = async (endpoint: Endpoint, variables?: Variables) => {
+const LegacyRequest = async (endpoint: Endpoint, variables?: Variables, OAuthToken?: string) => {
     const headers: HeadersInit = {
         Authorization: `Bearer ${Token}`,
     }
@@ -80,7 +87,7 @@ const LegacyRequest = async (endpoint: Endpoint, variables?: Variables) => {
     }
 }
 
-const MiscRequest = async (endpoint: Endpoint, variables?: Variables) => {
+const MiscRequest = async (endpoint: Endpoint, variables?: Variables, OAuthToken?: string) => {
     const headers: HeadersInit = {
         Authorization: `Bearer ${Token}`,
     }
@@ -123,21 +130,21 @@ const MiscRequest = async (endpoint: Endpoint, variables?: Variables) => {
  * @param variables
  * @returns
  */
-export const TQLRequest = async (endpoint: Endpoint, variables?: Variables) => {
+export const TQLRequest = async (endpoint: Endpoint, variables?: Variables, OAuthToken?: string) => {
     switch (endpoint.host.type) {
         case "gql": {
-            const res = await QLRequest(endpoint, variables ?? {})
+            const res = await QLRequest(endpoint, variables ?? {}, OAuthToken)
             return res
         }
         case "v1.1": {
-            const res = await LegacyRequest(endpoint, variables)
+            const res = await LegacyRequest(endpoint, variables, OAuthToken)
             return res
         }
         // case "v2": {
         //     break
         // }
         case "i": {
-            const res = await MiscRequest(endpoint, variables)
+            const res = await MiscRequest(endpoint, variables, OAuthToken)
             return res
         }
         default:
