@@ -6,9 +6,9 @@ import { TweetDetailRes } from "../../types/response/tweet_detail.ts"
 export const getTweetDetail = async (variables: TweetDetailParam) => {
     const res = await TQLRequest(TweetDetail, {
         with_rux_injections: false,
-        includePromotedContent: true,
+        includePromotedContent: false,
         withCommunity: false,
-        withQuickPromoteEligibilityTweetFields: true,
+        withQuickPromoteEligibilityTweetFields: false,
         withBirdwatchNotes: false,
         withSuperFollowsUserFields: true,
         withBirdwatchPivots: true,
