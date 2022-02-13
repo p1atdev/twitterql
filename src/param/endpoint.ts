@@ -69,6 +69,17 @@ export const GuestToken: Endpoint = {
 }
 
 /**
+ * Search typehead
+ * @type {Endpoint}
+ */
+export const SearchTypehead: Endpoint = {
+    host: LegacyHost,
+    path: "/search/typeahead.json",
+    method: "GET",
+    needAuth: true,
+}
+
+/**
  * If a user name is registered or not
  * @type {Endpoint}
  */
