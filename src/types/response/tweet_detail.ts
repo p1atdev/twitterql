@@ -358,9 +358,14 @@ export interface ItemItemContent {
     itemType?: ItemType
     tweet_results?: TweetResults
     tweetDisplayType?: TweetDisplayType
+
+    value?: string
+    cursorType?: string
+    displayTreatment?: { actionText: string }
 }
 
 export enum ItemType {
+    // TODO: ここをちゃんとする
     TimelineTweet = "TimelineTweet",
 }
 
@@ -444,9 +449,13 @@ export interface V2TimelinesDetails {
 }
 
 export interface V2ItemItemContent {
-    itemType: string
-    tweet_results: V2TweetResults
-    tweetDisplayType: string
+    itemType?: string
+    tweet_results?: V2TweetResults
+    tweetDisplayType?: string // TODO: ここも型をつける
+
+    value?: string
+    cursorType?: string
+    displayTreatment?: { actionText: string }
 }
 
 export interface V2ItemTweetResults {
