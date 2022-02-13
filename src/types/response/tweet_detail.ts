@@ -6,7 +6,7 @@ export interface TweetDetailRes extends TQLResponse {
 
 export interface Data {
     threaded_conversation_with_injections?: ThreadedConversationWithInjections
-    threaded_conversation_with_injections_v2: ThreadedConversationWithInjectionsV2
+    threaded_conversation_with_injections_v2?: ThreadedConversationWithInjectionsV2
 }
 
 export interface ThreadedConversationWithInjections {
@@ -417,7 +417,177 @@ export interface V2TweetResults {
 
 export interface V2Item {
     entryId: string
-    item: string[]
+    item: V2ItemItem[]
+}
+
+export interface V2ItemItem {
+    itemContent: V2ItemItemContent
+    clientEventInfo: V2ClientEventInfo
+}
+
+export interface V2ClientEventInfo {
+    details: V2Details
+}
+
+export interface V2ItemDetails {
+    conversationDetails: V2ConversationDetails
+    timelinesDetails: V2TimelinesDetails
+}
+
+export interface V2ConversationDetails {
+    conversationSection: string
+}
+
+export interface V2TimelinesDetails {
+    controllerData: string
+}
+
+export interface V2ItemItemContent {
+    itemType: string
+    tweet_results: V2TweetResults
+    tweetDisplayType: string
+}
+
+export interface V2ItemTweetResults {
+    result: V2TweetResultsResult
+}
+
+export interface V2TweetResultsResult {
+    __typename: string
+    rest_id: string
+    core: V2Core
+    legacy: V2FluffyLegacy
+}
+
+export interface V2Core {
+    user_results: V2UserResults
+}
+
+export interface V2UserResults {
+    result: V2UserResultsResult
+}
+
+export interface V2UserResultsResult {
+    __typename: string
+    id: string
+    rest_id: string
+    affiliates_highlighted_label: V2AffiliatesHighlightedLabel
+    has_nft_avatar: boolean
+    legacy: V2PurpleLegacy
+    super_follow_eligible: boolean
+    super_followed_by: boolean
+    super_following: boolean
+}
+
+export interface V2AffiliatesHighlightedLabel {}
+
+export interface V2PurpleLegacy {
+    created_at: string
+    default_profile: boolean
+    default_profile_image: boolean
+    description: string
+    entities: V2PurpleEntities
+    fast_followers_count: number
+    favourites_count: number
+    followers_count: number
+    friends_count: number
+    has_custom_timelines: boolean
+    is_translator: boolean
+    listed_count: number
+    location: string
+    media_count: number
+    name: string
+    normal_followers_count: number
+    pinned_tweet_ids_str: string[]
+    profile_image_extensions: V2ProfileImageExtensions
+    profile_image_url_https: string
+    profile_interstitial_type: string
+    protected: boolean
+    screen_name: string
+    statuses_count: number
+    translator_type: string
+    url: string
+    verified: boolean
+    withheld_in_countries: any[]
+}
+
+export interface V2PurpleEntities {
+    description: V2Description
+    url: V2Description
+}
+
+export interface V2Description {
+    urls: V2URL[]
+}
+
+export interface V2URL {
+    display_url: string
+    expanded_url: string
+    url: string
+    indices: number[]
+}
+
+export interface V2ProfileImageExtensions {
+    mediaColor: V2MediaColor
+}
+
+export interface V2MediaColor {
+    r: V2R
+}
+
+export interface V2R {
+    ok: V2Ok
+}
+
+export interface V2Ok {
+    palette: V2Palette[]
+}
+
+export interface V2Palette {
+    percentage: number
+    rgb: V2RGB
+}
+
+export interface V2RGB {
+    blue: number
+    green: number
+    red: number
+}
+
+export interface V2FluffyLegacy {
+    created_at: string
+    conversation_id_str: string
+    display_text_range: number[]
+    entities: V2FluffyEntities
+    favorite_count: number
+    favorited: boolean
+    full_text: string
+    in_reply_to_screen_name: string
+    in_reply_to_status_id_str: string
+    in_reply_to_user_id_str: string
+    is_quote_status: boolean
+    lang: string
+    quote_count: number
+    reply_count: number
+    retweet_count: number
+    retweeted: boolean
+    source: string
+    user_id_str: string
+    id_str: string
+}
+
+export interface V2FluffyEntities {
+    user_mentions: V2UserMention[]
+    urls: any[]
+    hashtags: any[]
+    symbols: any[]
+}
+
+export interface V2UserMention {
+    id_str: string
+    name: string
+    screen_name: string
+    indices: number[]
 }
 
 export interface V2Metadata {
