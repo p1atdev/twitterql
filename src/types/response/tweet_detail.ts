@@ -417,7 +417,7 @@ export interface V2TweetResults {
 
 export interface V2Item {
     entryId: string
-    item: V2ItemItem[]
+    item: V2ItemItem
 }
 
 export interface V2ItemItem {
