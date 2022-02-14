@@ -2,6 +2,7 @@ import { Variables } from "../endpoint.ts"
 
 export interface TweetDetailParam extends Variables {
     focalTweetId: string
+    cursor?: string
     with_rux_injections?: boolean
     includePromotedContent?: boolean
     withCommunity?: boolean
