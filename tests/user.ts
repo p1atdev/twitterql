@@ -17,3 +17,4 @@ const userByRestId = await getUserByRestId({
 
 console.dir(userByScreenName)
 console.dir(userByRestId)
+console.log(userByScreenName.data.user!.result.rest_id)

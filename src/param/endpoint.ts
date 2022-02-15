@@ -50,6 +50,30 @@ export const UserTweetsAndReplies: Endpoint = {
 }
 
 /**
+ * Favoriters of tweet
+ * @param {Endpoint}
+ */
+export const Favoriters: Endpoint = {
+    host: GraphQLHost,
+    operationName: "Favoriters",
+    method: "GET",
+    needAuth: true,
+    needOAuth: false,
+}
+
+/**
+ * Favoriters of retweet
+ * @param {Endpoint}
+ */
+export const Retweeters: Endpoint = {
+    host: GraphQLHost,
+    operationName: "Retweeters",
+    method: "GET",
+    needAuth: true,
+    needOAuth: false,
+}
+
+/**
  * User verified avatars endpoint
  * よくわからない
  * @param {Endpoint}
@@ -108,6 +132,18 @@ export const FetchDraftTweets: Endpoint = {
     method: "GET",
     needAuth: true,
     needOAuth: true,
+}
+
+/**
+ * Basic search endpoint
+ * @param {Endpoint}
+ */
+export const SearchAdaptive: Endpoint = {
+    host: v2Host,
+    path: "/search/adaptive.json",
+    method: "GET",
+    needAuth: true,
+    needOAuth: false,
 }
 
 /**

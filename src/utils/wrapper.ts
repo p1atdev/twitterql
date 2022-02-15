@@ -16,7 +16,7 @@ const QLRequest = async (endpoint: Endpoint, variables: Variables, OAuthToken?: 
     // get the corresponding query id
     const queryId = queries.filter((query) => query.operationName === endpoint.operationName)[0].queryId
 
-    const url = new URL([endpoint.host.host, queryId, endpoint.operationName].join("/")) //+ `?variables=${JSON.stringify(variables)}`
+    const url = new URL([endpoint.host.host, queryId, endpoint.operationName].join("/"))
 
     const headers: HeadersInit = {
         Authorization: `Bearer ${Token}`,
@@ -91,6 +91,49 @@ const LegacyRequest = async (endpoint: Endpoint, variables?: Variables, OAuthTok
     }
 }
 
+const V2Request = async (endpoint: Endpoint, variables?: Variables, OAuthToken?: string) => {
+    const headers: HeadersInit = {
+        Authorization: `Bearer ${Token}`,
+    }
+
+    if (endpoint.needAuth) {
+        const guestToken = await getGuestToken()
+        headers["x-guest-token"] = guestToken
+    }
+
+    const query = (() => {
+        if (variables) {
+            // set query params
+            const queryParams = new URLSearchParams()
+            Object.entries(variables).forEach(([key, value]) => {
+                queryParams.set(key, value)
+            })
+            return `?${queryParams.toString()}`
+        } else {
+            return ""
+        }
+    })()
+
+    // console.log(headers)
+
+    const url = endpoint.host.host + endpoint.path + query
+
+    // console.log(url)
+
+    try {
+        const res = await fetch(url, {
+            method: endpoint.method,
+            headers: headers,
+        })
+
+        // console.log(res)
+
+        return res
+    } catch (err) {
+        throw Error("Failed to fetch:" + err)
+    }
+}
+
 const MiscRequest = async (endpoint: Endpoint, variables?: Variables, OAuthToken?: string) => {
     const headers: HeadersInit = {
         Authorization: `Bearer ${Token}`,
@@ -110,7 +153,7 @@ const MiscRequest = async (endpoint: Endpoint, variables?: Variables, OAuthToken
             })
             return `?${queryParams.toString()}`
         } else {
-            throw Error("MiscRequest requires variables.")
+            throw Error("V2Request requires variables.")
         }
     })()
 
@@ -144,14 +187,16 @@ export const TQLRequest = async (endpoint: Endpoint, variables?: Variables, OAut
             const res = await LegacyRequest(endpoint, variables, OAuthToken)
             return res
         }
-        // case "v2": {
-        //     break
-        // }
+        case "v2": {
+            const res = await V2Request(endpoint, variables, OAuthToken)
+            return res
+        }
         case "i": {
             const res = await MiscRequest(endpoint, variables, OAuthToken)
             return res
         }
-        default:
+        default: {
             throw Error("Unknown host type.")
+        }
     }
 }
