@@ -21,7 +21,7 @@ export const LegacyHost: Host = {
  */
 export const v2Host: Host = {
     type: "v2",
-    host: "https://api.twitter.com/2",
+    host: "https://twitter.com/i/api/2",
 }
 
 /**
