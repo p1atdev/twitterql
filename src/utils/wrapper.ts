@@ -2,6 +2,7 @@ import { Endpoint, Variables } from "../types/mod.ts"
 import { TwitterAuthToken as Token } from "../param/token.ts"
 import { getGuestToken } from "../twitter/mod.ts"
 import { getQueryIds } from "../twitter/query/get_query_ids.ts"
+import { Query } from "../types/mod.ts"
 
 /**
  *
@@ -10,11 +11,17 @@ import { getQueryIds } from "../twitter/query/get_query_ids.ts"
  * @param guestToken
  * @returns
  */
-const QLRequest = async (endpoint: Endpoint, variables: Variables, OAuthToken?: string) => {
+const QLRequest = async (
+    endpoint: Endpoint,
+    variables?: Variables,
+    OAuthToken?: string,
+    guestToken?: string,
+    queries?: Query[]
+) => {
     // first get query ids
-    const queries = await getQueryIds()
+    const _queries = queries ?? (await getQueryIds())
     // get the corresponding query id
-    const queryId = queries.filter((query) => query.operationName === endpoint.operationName)[0].queryId
+    const queryId = _queries.filter((query) => query.operationName === endpoint.operationName)[0].queryId
 
     const url = new URL([endpoint.host.host, queryId, endpoint.operationName].join("/"))
 
@@ -23,8 +30,8 @@ const QLRequest = async (endpoint: Endpoint, variables: Variables, OAuthToken?: 
     }
 
     if (endpoint.needAuth) {
-        const guestToken = await getGuestToken()
-        headers["x-guest-token"] = guestToken
+        const _guestToken: string = guestToken ?? (await getGuestToken())
+        headers["x-guest-token"] = _guestToken
     }
 
     if (endpoint.needOAuth) {
@@ -37,7 +44,7 @@ const QLRequest = async (endpoint: Endpoint, variables: Variables, OAuthToken?: 
     // console.log(headers)
 
     try {
-        const variableJSON = JSON.stringify(variables)
+        const variableJSON = JSON.stringify(variables ?? {})
         url.search = new URLSearchParams({ variables: variableJSON }).toString()
         const res = await fetch(url, {
             method: endpoint.method,
@@ -50,14 +57,14 @@ const QLRequest = async (endpoint: Endpoint, variables: Variables, OAuthToken?: 
     }
 }
 
-const LegacyRequest = async (endpoint: Endpoint, variables?: Variables, OAuthToken?: string) => {
+const LegacyRequest = async (endpoint: Endpoint, variables?: Variables, OAuthToken?: string, guestToken?: string) => {
     const headers: HeadersInit = {
         Authorization: `Bearer ${Token}`,
     }
 
     if (endpoint.needAuth) {
-        const guestToken = await getGuestToken()
-        headers["x-guest-token"] = guestToken
+        const _guestToken: string = guestToken ?? (await getGuestToken())
+        headers["x-guest-token"] = _guestToken
     }
 
     const query = (() => {
@@ -91,14 +98,14 @@ const LegacyRequest = async (endpoint: Endpoint, variables?: Variables, OAuthTok
     }
 }
 
-const V2Request = async (endpoint: Endpoint, variables?: Variables, OAuthToken?: string) => {
+const V2Request = async (endpoint: Endpoint, variables?: Variables, OAuthToken?: string, guestToken?: string) => {
     const headers: HeadersInit = {
         Authorization: `Bearer ${Token}`,
     }
 
     if (endpoint.needAuth) {
-        const guestToken = await getGuestToken()
-        headers["x-guest-token"] = guestToken
+        const _guestToken: string = guestToken ?? (await getGuestToken())
+        headers["x-guest-token"] = _guestToken
     }
 
     const query = (() => {
@@ -134,14 +141,14 @@ const V2Request = async (endpoint: Endpoint, variables?: Variables, OAuthToken?:
     }
 }
 
-const MiscRequest = async (endpoint: Endpoint, variables?: Variables, OAuthToken?: string) => {
+const MiscRequest = async (endpoint: Endpoint, variables?: Variables, OAuthToken?: string, guestToken?: string) => {
     const headers: HeadersInit = {
         Authorization: `Bearer ${Token}`,
     }
 
     if (endpoint.needAuth) {
-        const guestToken = await getGuestToken()
-        headers["x-guest-token"] = guestToken
+        const _guestToken: string = guestToken ?? (await getGuestToken())
+        headers["x-guest-token"] = _guestToken
     }
 
     const query = (() => {
@@ -177,22 +184,28 @@ const MiscRequest = async (endpoint: Endpoint, variables?: Variables, OAuthToken
  * @param variables
  * @returns
  */
-export const TQLRequest = async (endpoint: Endpoint, variables?: Variables, OAuthToken?: string) => {
+export const TQLRequest = async (
+    endpoint: Endpoint,
+    variables?: Variables,
+    queries?: Query[],
+    OAuthToken?: string,
+    guestToken?: string
+) => {
     switch (endpoint.host.type) {
         case "gql": {
-            const res = await QLRequest(endpoint, variables ?? {}, OAuthToken)
+            const res = await QLRequest(endpoint, variables, OAuthToken, guestToken, queries)
             return res
         }
         case "v1.1": {
-            const res = await LegacyRequest(endpoint, variables, OAuthToken)
+            const res = await LegacyRequest(endpoint, variables, OAuthToken, guestToken)
             return res
         }
         case "v2": {
-            const res = await V2Request(endpoint, variables, OAuthToken)
+            const res = await V2Request(endpoint, variables, OAuthToken, guestToken)
             return res
         }
         case "i": {
-            const res = await MiscRequest(endpoint, variables, OAuthToken)
+            const res = await MiscRequest(endpoint, variables, OAuthToken, guestToken)
             return res
         }
         default: {

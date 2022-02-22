@@ -135,6 +135,18 @@ export const FetchDraftTweets: Endpoint = {
 }
 
 /**
+ * Followings of user
+ * @param {Endpoint}
+ */
+export const Following: Endpoint = {
+    host: GraphQLHost,
+    operationName: "Following",
+    method: "GET",
+    needAuth: true,
+    needOAuth: false,
+}
+
+/**
  * Basic search endpoint
  * @param {Endpoint}
  */
