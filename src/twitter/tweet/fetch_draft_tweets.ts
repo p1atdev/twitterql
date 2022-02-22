@@ -9,6 +9,7 @@ export const fetchDraftTweets = async (variables: FetchDraftTweetsParam, OAuthTo
         {
             ...variables,
         },
+        undefined,
         OAuthToken
     )
     // console.log(res)

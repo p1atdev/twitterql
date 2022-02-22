@@ -1,15 +1,17 @@
 // import { Variables } from "../src/types/endpoint.ts"
 // import { getGuestToken } from "../src/twitter/guest/get_guest_token.ts"
-import { getUserByScreenName, getUserByRestId } from "../src/twitter/mod.ts"
+import { getUserByScreenName, getUserByRestId, getGuestToken, getQueryIds } from "../src/twitter/mod.ts"
 
-// const guestToken = await getGuestToken()
+const guestToken = await getGuestToken()
+const queries = await getQueryIds()
 
-// console.log(guestToken)
-// await getTweetDetail()
-
-const userByScreenName = await getUserByScreenName({
-    screen_name: "deno_land",
-})
+const userByScreenName = await getUserByScreenName(
+    {
+        screen_name: "deno_land",
+    },
+    guestToken,
+    queries
+)
 
 const userByRestId = await getUserByRestId({
     userId: userByScreenName.data.user!.result.rest_id,

@@ -1,13 +1,26 @@
-import { getUserByScreenName, getUserTweets, getSearchTypehead } from "../src/twitter/mod.ts"
+import {
+    getUserByScreenName,
+    getUserTweets,
+    getSearchTypehead,
+    getGuestToken,
+    getQueryIds,
+} from "../src/twitter/mod.ts"
+
+const guestToken = await getGuestToken()
+const queries = await getQueryIds()
 
 const targetUserName = "twitter"
 // @ojitan_55 is suggestion banned
 
 console.log(`@${targetUserName} is shadow banned?`)
 
-const targetUser = await getUserByScreenName({
-    screen_name: targetUserName,
-})
+const targetUser = await getUserByScreenName(
+    {
+        screen_name: targetUserName,
+    },
+    guestToken,
+    queries
+)
 
 if (targetUser.data.user) {
     console.log("[1] User exists")
@@ -15,10 +28,13 @@ if (targetUser.data.user) {
     throw console.error("[!?] User does not exist")
 }
 
-const searchResults = await getSearchTypehead({
-    q: `@${targetUserName}`,
-    result_type: "users",
-})
+const searchResults = await getSearchTypehead(
+    {
+        q: `@${targetUserName}`,
+        result_type: "users",
+    },
+    guestToken
+)
 
 if (searchResults.users.length == 0) {
     console.log("[2] User is not in search results")
