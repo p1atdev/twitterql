@@ -1,15 +1,16 @@
-import { TQLRequest } from "../../utils/wrapper.ts"
-import { GuestToken } from "../../param/mod.ts"
-import { GuestTokenRes } from "../../types/response/guest_token.ts"
+import { TQLRequest } from "../../utils/wrapper.ts";
+import { GuestToken } from "../../param/mod.ts";
+import { GuestTokenRes } from "../../types/response/guest_token.ts";
 
 export const getGuestToken = async () => {
-    try {
-        const res = await TQLRequest(GuestToken)
+  // console.log("[*] Fetching guest token")
+  try {
+    const res = await TQLRequest(GuestToken);
 
-        const response: GuestTokenRes = await res.json()
+    const response: GuestTokenRes = await res.json();
 
-        return response.guest_token
-    } catch {
-        throw Error("Failed to get guest token.")
-    }
-}
+    return response.guest_token;
+  } catch {
+    throw Error("Failed to get guest token.");
+  }
+};

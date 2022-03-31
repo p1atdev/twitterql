@@ -1,1 +1,1 @@
-export * from "./get_query_ids.ts"
+export * from "./get_query_ids.ts";
