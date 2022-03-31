@@ -1,1 +1,1 @@
-export * from "./following.ts"
+export * from "./following.ts";

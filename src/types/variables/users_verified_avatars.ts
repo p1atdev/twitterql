@@ -1,5 +1,7 @@
-import { Variables } from "../endpoint.ts"
+import { Variables } from "../endpoint.ts";
 
 export interface UsersVerifiedAvatarsParam extends Variables {
-    userIds: string[]
+  userIds: string[];
 }
+
+export const initialUsersVerifiedAvatarsParam: Variables = {};

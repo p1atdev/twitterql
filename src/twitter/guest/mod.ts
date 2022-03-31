@@ -1,1 +1,1 @@
-export * from "./get_guest_token.ts"
+export * from "./get_guest_token.ts";

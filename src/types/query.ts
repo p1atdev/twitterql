@@ -1,5 +1,5 @@
 export interface Query {
-    queryId: string
-    operationName: string
-    operationType: "mutations" | "queries"
+  queryId: string;
+  operationName: string;
+  operationType: "mutations" | "queries";
 }
