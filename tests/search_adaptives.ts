@@ -1,8 +1,8 @@
-import { getSearchAdaptive } from "../src/twitter/mod.ts"
+import { getSearchAdaptive } from "../src/twitter/mod.ts";
 
 const result = await getSearchAdaptive({
-    q: "from:@RyogaooWW",
-    count: 1,
-})
+  q: "from:@RyogaooWW",
+  count: 1,
+});
 
-console.dir(result, { depth: 20 })
+console.dir(result, { depth: 20 });

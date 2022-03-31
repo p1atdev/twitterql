@@ -1,16 +1,19 @@
-import { getUserTweetsAndReplies, getUserByScreenName } from "../src/twitter/mod.ts"
+import {
+  getUserByScreenName,
+  getUserTweetsAndReplies,
+} from "../src/twitter/mod.ts";
 
 const user = await getUserByScreenName({
-    screen_name: "claudionatale1",
-})
+  screen_name: "claudionatale1",
+});
 
 if (!user.data.user) {
-    throw new Error("user not found")
+  throw new Error("user not found");
 }
 
 const tweetsAndReplies = await getUserTweetsAndReplies({
-    userId: user.data.user.result.rest_id,
-    count: 10,
-})
+  userId: user.data.user.result.rest_id,
+  count: 10,
+});
 
-console.dir(tweetsAndReplies, { depth: 30 })
+console.dir(tweetsAndReplies, { depth: 30 });

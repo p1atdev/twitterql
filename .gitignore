@@ -62,3 +62,4 @@ $RECYCLE.BIN/
 # Deno
 coverage.lcov
 coverage
+./dist

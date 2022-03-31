@@ -1,7 +1,7 @@
-import { getTweetDetail } from "../src/twitter/mod.ts"
+import { getTweetDetail } from "../src/twitter/mod.ts";
 
 const tweetDetail = await getTweetDetail({
-    focalTweetId: "1492073151857295360",
-})
+  focalTweetId: "1492073151857295360",
+});
 
-console.dir(tweetDetail, { depth: 10 })
+console.dir(tweetDetail, { depth: 10 });
