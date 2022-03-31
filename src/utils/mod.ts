@@ -1,1 +1,1 @@
-export * from "./wrapper.ts"
+export * from "./wrapper.ts";

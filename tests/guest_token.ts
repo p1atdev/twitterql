@@ -1,5 +1,5 @@
-import { getGuestToken } from "../src/twitter/mod.ts"
+import { getGuestToken } from "../src/twitter/mod.ts";
 
-const guestToken = await getGuestToken()
+const guestToken = await getGuestToken();
 
-console.log(guestToken)
+console.log(guestToken);

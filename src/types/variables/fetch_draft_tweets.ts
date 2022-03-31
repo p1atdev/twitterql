@@ -1,5 +1,7 @@
-import { Variables } from "../endpoint.ts"
+import { Variables } from "../endpoint.ts";
 
 export interface FetchDraftTweetsParam extends Variables {
-    ascending: boolean // true
+  ascending: boolean; // true
 }
+
+export const initialFetchDraftTweetsParam: Variables = {};
