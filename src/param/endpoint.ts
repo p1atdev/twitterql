@@ -1,6 +1,7 @@
 import { Endpoint } from "../types/mod.ts";
 import { GraphQLHost, iHost, LegacyHost, v2Host } from "./url.ts";
 import {
+  initialCommunityTweetsTimelineParam,
   initialEmailAvailableParam,
   initialFetchDraftTweetsParam,
   initialFollowingParam,
@@ -170,6 +171,18 @@ export const Following: Endpoint = {
   needAuth: true,
   needOAuth: false,
   initialVariables: initialFollowingParam,
+};
+
+/**
+ * Community timeline
+ */
+export const CommunityTweetsTimeline: Endpoint = {
+  host: GraphQLHost,
+  operationName: "CommunityTweetsTimeline",
+  method: "GET",
+  needAuth: true,
+  needOAuth: false,
+  initialVariables: initialCommunityTweetsTimelineParam,
 };
 
 /**
