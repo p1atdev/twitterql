@@ -9,12 +9,20 @@ export const GraphQLHost: Host = {
 };
 
 /**
- * Twitter v2 API's host
+ * Twitter normal v1.1 API's host
  */
 export const LegacyHost: Host = {
   type: "v1.1",
   host: "https://api.twitter.com/1.1",
 };
+
+// /**
+//  * Twitter v1.1 API's host
+//  */
+// export const v1_1Host: Host = {
+//   type: "v1.1",
+//   host: "https://twitter.com/i/api/1.1",
+// };
 
 /**
  * Twitter v2 API's host

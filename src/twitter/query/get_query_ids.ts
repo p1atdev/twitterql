@@ -22,10 +22,9 @@ export const getQueryIds = async () => {
 
   // get all query ids from main.js
   const mainJsText = await mainJs.text();
-  const queryIds =
-    mainJsText.match(
-      /{queryId:"([^"]+)",operationName:"([^"]+)",operationType:"([^"]+)"/g,
-    ) || [];
+  const queryIds = mainJsText.match(
+    /{queryId:"([^"]+)",operationName:"([^"]+)",operationType:"([^"]+)"/g,
+  ) || [];
   const patchedQueryArray = queryIds.map((query) => query + "}");
 
   const queries = patchedQueryArray.map((query) => {
