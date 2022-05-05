@@ -1,10 +1,10 @@
 import { Endpoint } from "../types/mod.ts";
 import { GraphQLHost, iHost, LegacyHost, v2Host } from "./url.ts";
 import {
+  initialEmailAvailableParam,
   initialFetchDraftTweetsParam,
   initialFollowingParam,
   initialSearchAdaptiveParam,
-  initialSearchTypeheadParam,
   initialTweetDetailParam,
   initialUserByRestIdParam,
   initialUserByScreenNameParam,
@@ -12,6 +12,7 @@ import {
   initialUsersVerifiedAvatarsParam,
   initialUserTweetsAndRepliesParam,
   initialUserTweetsParam,
+  OnboardingParam,
 } from "../types/mod.ts";
 
 /**
@@ -231,6 +232,31 @@ export const SearchTypehead: Endpoint = {
 };
 
 /**
+ * Tasks of onboarding (sign up)
+ * @type {Endpoint}
+ */
+export const OnboardingTaskSignUp: Endpoint = {
+  host: LegacyHost,
+  path: "/onboarding/task.json?flow_name=signup",
+  method: "POST",
+  needAuth: true,
+  needOAuth: false,
+};
+
+/**
+ * Begin verification of sign up
+ * @type {Endpoint}
+ */
+export const OnboardingBeginVerification: Endpoint = {
+  host: LegacyHost,
+  path: "/onboarding/begin_verification.json",
+  method: "POST",
+  needAuth: true,
+  needOAuth: false,
+  initialVariables: OnboardingParam.initialBeginVerificationParam,
+};
+
+/**
  * If a user name is registered or not
  * @type {Endpoint}
  */
@@ -240,4 +266,18 @@ export const UserNameAvailable: Endpoint = {
   method: "GET",
   needAuth: true,
   needOAuth: false,
+  initialVariables: initialUserNameAvailableParam,
+};
+
+/**
+ * If a email is available
+ * @type {Endpoint}
+ */
+export const EmailAvailable: Endpoint = {
+  host: iHost,
+  path: "/users/email_available.json",
+  method: "GET",
+  needAuth: true,
+  needOAuth: false,
+  initialVariables: initialEmailAvailableParam,
 };

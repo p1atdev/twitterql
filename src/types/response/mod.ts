@@ -7,3 +7,5 @@ export { type UserTweetsAndRepliesRes } from "./user_tweets_and_replies.ts";
 export { type FollowingRes } from "./following.ts";
 export { type SearchAdaptiveRes } from "./search_adaptive.ts";
 export { type SearchTypeheadRes } from "./search_typehead.ts";
+export { type EmailAvailableRes } from "./email_available.ts";
+export * as OnboardingRes from "./onboarding/mod.ts";

@@ -9,3 +9,5 @@ export * from "./user_tweets_and_replies.ts";
 export * from "./user_tweets.ts";
 export * from "./username_available.ts";
 export * from "./users_verified_avatars.ts";
+export * from "./email_available.ts";
+export * as OnboardingParam from "./onboarding/mod.ts";

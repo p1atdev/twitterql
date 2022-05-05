@@ -44,18 +44,16 @@ export class TwitterQLClient {
       throw Error("Client not setup");
     }
 
-    const queryId =
-      this.queryIds.filter((query) =>
-        query.operationName === endpoint.operationName
-      )[0].queryId;
-
     const url: URL = (() => {
       if (endpoint.host.type === "gql") {
+        const queryId = this.queryIds.filter((query) =>
+          query.operationName === endpoint.operationName
+        )[0].queryId;
         return new URL(
           [endpoint.host.host, queryId, endpoint.operationName].join("/"),
         );
       } else {
-        return new URL([endpoint.host.host, endpoint.path!].join("/"));
+        return new URL([endpoint.host.host, endpoint.path!].join(""));
       }
     })();
 
@@ -66,7 +64,7 @@ export class TwitterQLClient {
           ...variables,
         }),
       }).toString();
-    } else {
+    } else if (endpoint.method === "GET") {
       url.search = new URLSearchParams({
         ...endpoint.initialVariables,
         ...variables,
@@ -76,13 +74,37 @@ export class TwitterQLClient {
     // console.log(this.headers);
     // console.log(url.toString());
 
-    const res: Res = await fetch(url.toString(), {
-      method: endpoint.method,
-      headers: this.headers,
-    }).then((res) => res.json());
+    if (endpoint.method === "GET") {
+      const res: Res = await fetch(url.toString(), {
+        method: endpoint.method,
+        headers: this.headers,
+      }).then((res) => res.json());
+
+      return res;
+    } else if (endpoint.method === "POST") {
+      this.headers.set("content-type", "application/json");
+
+      const res: Res = await fetch(url.toString(), {
+        method: endpoint.method,
+        headers: this.headers,
+        body: JSON.stringify({
+          ...endpoint.initialVariables,
+          ...variables,
+        }),
+      }).then((res) => {
+        const contentType = res.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
+          return res.json();
+        } else {
+          return res.text();
+        }
+      });
+
+      return res;
+    } else {
+      throw Error("Unsupported method");
+    }
 
     // console.log(res);
-
-    return res;
   }
 }

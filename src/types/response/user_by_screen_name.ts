@@ -26,7 +26,14 @@ export interface Result {
   is_profile_translatable: boolean;
 }
 
-export interface AffiliatesHighlightedLabel {}
+export interface AffiliatesHighlightedLabel {
+  birthdate?: {
+    day?: number;
+    month?: number;
+    visibility: string;
+    year_visibility: string;
+  };
+}
 
 export interface Legacy {
   created_at: string;

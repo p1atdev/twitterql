@@ -158,7 +158,7 @@ const V2Request = async (
 const MiscRequest = async (
   endpoint: Endpoint,
   variables?: Variables,
-  OAuthToken?: string,
+  // OAuthToken?: string,
   guestToken?: string,
 ) => {
   const headers: HeadersInit = {
@@ -237,7 +237,7 @@ export const TQLRequest = async (
       const res = await MiscRequest(
         endpoint,
         variables,
-        OAuthToken,
+        // OAuthToken,
         guestToken,
       );
       return res;
