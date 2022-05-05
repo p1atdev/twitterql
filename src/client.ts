@@ -78,7 +78,10 @@ export class TwitterQLClient {
       const res: Res = await fetch(url.toString(), {
         method: endpoint.method,
         headers: this.headers,
-      }).then((res) => res.json());
+      }).then((res) => res.json()).catch((err) => {
+        console.error(err);
+        throw err;
+      });
 
       return res;
     } else if (endpoint.method === "POST") {
@@ -98,6 +101,9 @@ export class TwitterQLClient {
         } else {
           return res.text();
         }
+      }).catch((err) => {
+        console.error(err);
+        throw err;
       });
 
       return res;
