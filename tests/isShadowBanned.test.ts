@@ -6,7 +6,7 @@ import {
   getUserByScreenName,
   getUserTweetsAndReplies,
 } from "../src/twitter/mod.ts";
-import { assertEquals, assertExists } from "../deps.ts";
+import { assertExists, assertNotEquals } from "../deps.ts";
 
 Deno.test("shadow ban checker", async () => {
   const guestToken = await getGuestToken();
@@ -152,6 +152,9 @@ Deno.test("shadow ban checker", async () => {
       .filter((reply) => {
         return reply?.id_str === targetReplyTweet;
       });
+
+    // @twitter is not banned
+    assertNotEquals(filteredReplyTree.length, 0);
 
     if (filteredReplyTree.length === 0) {
       const cursors = replyTreeInstruction

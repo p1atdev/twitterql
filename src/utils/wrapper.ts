@@ -64,7 +64,7 @@ const QLRequest = async (
 const LegacyRequest = async (
   endpoint: Endpoint,
   variables?: Variables,
-  OAuthToken?: string,
+  // OAuthToken?: string,
   guestToken?: string,
 ) => {
   const headers: HeadersInit = {
@@ -110,7 +110,7 @@ const LegacyRequest = async (
 const V2Request = async (
   endpoint: Endpoint,
   variables?: Variables,
-  OAuthToken?: string,
+  // OAuthToken?: string,
   guestToken?: string,
 ) => {
   const headers: HeadersInit = {
@@ -224,13 +224,18 @@ export const TQLRequest = async (
       const res = await LegacyRequest(
         endpoint,
         variables,
-        OAuthToken,
+        // OAuthToken,
         guestToken,
       );
       return res;
     }
     case "v2": {
-      const res = await V2Request(endpoint, variables, OAuthToken, guestToken);
+      const res = await V2Request(
+        endpoint,
+        variables,
+        // OAuthToken,
+        guestToken,
+      );
       return res;
     }
     case "i": {

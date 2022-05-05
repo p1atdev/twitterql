@@ -5,7 +5,7 @@ import {
   OnboardingTaskSignUp,
   TwitterQLClient,
 } from "../mod.ts";
-import { assertEquals } from "../deps.ts";
+import { assertExists } from "../deps.ts";
 
 Deno.test("Begin verification of sign up", async () => {
   const client = new TwitterQLClient();
@@ -54,5 +54,5 @@ Deno.test("Begin verification of sign up", async () => {
     },
   );
 
-  console.log(verification);
+  assertExists(verification);
 });
