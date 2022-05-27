@@ -1,34 +1,43 @@
 import {
-  getGuestToken,
-  getQueryIds,
-  getUserByRestId,
-  getUserByScreenName,
-} from "../src/twitter/mod.ts";
+  TwitterQLClient,
+  UserByRestId,
+  UserByRestIdParam,
+  UserByRestIdRes,
+  UserByScreenName,
+  UserByScreenNameParam,
+  UserByScreenNameRes,
+} from "../mod.ts";
 import { assertEquals, assertExists } from "../deps.ts";
 
 Deno.test("get user", async () => {
-  const guestToken = await getGuestToken();
-  const queries = await getQueryIds();
+  const client = new TwitterQLClient();
+  await client.setup();
 
-  const userByScreenName = await getUserByScreenName(
-    {
-      screen_name: "twitter",
-    },
-    guestToken,
-    queries,
-  );
+  const userByScreenNameReq: UserByScreenNameParam = {
+    screen_name: "twitter",
+  };
 
-  const userByRestId = await getUserByRestId({
-    userId: userByScreenName.data.user!.result.rest_id,
+  const userByScreenNameRes = await client.request<UserByScreenNameRes>({
+    endpoint: UserByScreenName,
+    variables: userByScreenNameReq,
   });
 
-  assertExists(userByScreenName.data.user);
-  assertExists(userByRestId.data.user);
+  const userByRestIdReq: UserByRestIdParam = {
+    userId: userByScreenNameRes.data.user!.result.rest_id,
+  };
 
-  assertExists(userByScreenName.data.user.result.rest_id);
+  const userByRestIdRes = await client.request<UserByRestIdRes>({
+    endpoint: UserByRestId,
+    variables: userByRestIdReq,
+  });
+
+  assertExists(userByScreenNameRes.data.user);
+  assertExists(userByRestIdRes.data.user);
+
+  assertExists(userByScreenNameRes.data.user.result.rest_id);
 
   assertEquals(
-    userByScreenName.data.user.result.rest_id,
-    userByRestId.data.user.result.rest_id,
+    userByScreenNameRes.data.user.result.rest_id,
+    userByRestIdRes.data.user.result.rest_id,
   );
 });
