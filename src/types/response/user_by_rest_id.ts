@@ -24,7 +24,7 @@ export interface Result {
   super_following: boolean;
 }
 
-export interface AffiliatesHighlightedLabel {}
+export type AffiliatesHighlightedLabel = Record<never, never>;
 
 export interface Legacy {
   created_at: string;

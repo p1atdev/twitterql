@@ -17,7 +17,7 @@ export interface GlobalObjects {
   lists: Broadcasts;
 }
 
-export interface Broadcasts {}
+export type Broadcasts = Record<never, never>;
 
 export interface TweetValue {
   created_at: string;

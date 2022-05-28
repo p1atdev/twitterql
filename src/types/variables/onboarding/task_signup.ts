@@ -15,8 +15,7 @@ export interface FlowContext {
   start_location: StartLocation;
 }
 
-export interface DebugOverrides {
-}
+export type DebugOverrides = Record<never, never>;
 
 export interface StartLocation {
   location: string;

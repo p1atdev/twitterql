@@ -109,7 +109,7 @@ export enum Typename {
   User = "User",
 }
 
-export interface AffiliatesHighlightedLabel {}
+export type AffiliatesHighlightedLabel = Record<never, never>;
 
 export interface PurpleLegacy {
   blocked_by?: boolean;
@@ -490,7 +490,7 @@ export interface V2UserResultsResult {
   super_following: boolean;
 }
 
-export interface V2AffiliatesHighlightedLabel {}
+export type V2AffiliatesHighlightedLabel = Record<never, never>;
 
 export interface V2PurpleLegacy {
   created_at: string;

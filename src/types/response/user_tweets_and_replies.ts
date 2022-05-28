@@ -138,7 +138,7 @@ export interface AdvertiserResultsResult {
   super_following: boolean;
 }
 
-export interface AffiliatesHighlightedLabel {}
+export type AffiliatesHighlightedLabel = Record<never, never>;
 
 export interface PurpleLegacy {
   blocked_by: boolean;
