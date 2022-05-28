@@ -99,7 +99,7 @@ export interface TweetResultsResult {
 
 export interface ResultCommunity {
   id_str: string;
-  name: CommunityName;
+  name: string;
   description: string;
   created_at: number;
   default_theme: DefaultTheme;
@@ -128,20 +128,12 @@ export interface Actions {
 
 export interface JoinActionResult {
   __typename: JoinActionResultTypename;
-  reason: Reason;
-  message: Message;
+  reason: string;
+  message: string;
 }
 
 export enum JoinActionResultTypename {
   CommunityJoinActionUnavailable = "CommunityJoinActionUnavailable",
-}
-
-export enum Message {
-  AlreadyAMember = "Already a member.",
-}
-
-export enum Reason {
-  ViewerIsMember = "ViewerIsMember",
 }
 
 export interface JoinRequestsResult {
@@ -160,7 +152,7 @@ export interface Results {
 
 export interface AdminResultsResult {
   __typename: ResultTypename;
-  id: ID;
+  id: string;
   rest_id: string;
   affiliates_highlighted_label: UnmentionInfo;
   has_nft_avatar: boolean;
@@ -174,19 +166,14 @@ export enum ResultTypename {
   User = "User",
 }
 
-export interface UnmentionInfo {
-}
-
-export enum ID {
-  VXNlcjo5NzA4NDI1Mjg1NDE4OTY3MDQ = "VXNlcjo5NzA4NDI1Mjg1NDE4OTY3MDQ=",
-}
+export type UnmentionInfo = Record<never, never>;
 
 export interface PurpleLegacy {
   blocked_by: boolean;
   blocking: boolean;
   can_dm: boolean;
   can_media_tag: boolean;
-  created_at: CreatedAt;
+  created_at: string;
   default_profile: boolean;
   default_profile_image: boolean;
   description: string;
@@ -204,7 +191,7 @@ export interface PurpleLegacy {
   location: string;
   media_count: number;
   muting: boolean;
-  name: LegacyName;
+  name: string;
   normal_followers_count: number;
   notifications: boolean;
   pinned_tweet_ids_str: string[];
@@ -214,16 +201,12 @@ export interface PurpleLegacy {
   profile_image_url_https: string;
   profile_interstitial_type: string;
   protected: boolean;
-  screen_name: ScreenName;
+  screen_name: string;
   statuses_count: number;
   translator_type: TranslatorType;
   verified: boolean;
   want_retweets: boolean;
   withheld_in_countries: any[];
-}
-
-export enum CreatedAt {
-  TueMar0602043000002018 = "Tue Mar 06 02:04:30 +0000 2018",
 }
 
 export interface PurpleEntities {
@@ -235,31 +218,10 @@ export interface Description {
 }
 
 export interface URL {
-  display_url: DisplayURL;
+  display_url: string;
   expanded_url: string;
   url: string;
   indices: number[];
-}
-
-export enum DisplayURL {
-  AmazonJpHzWishlistLs = "amazon.jp/hz/wishlist/ls…",
-  AmznTo3CNHkjW = "amzn.to/3CnHkjW",
-  BitLy3G99T6Y = "bit.ly/3g99t6Y",
-  BitLy3UFN0T0 = "bit.ly/3uFN0T0",
-  CyanotypedesBaseShop = "cyanotypedes.base.shop",
-  InstagramCOMSatomaru0329 = "instagram.com/satomaru_0329/",
-  NoteCOMShinyfish = "note.com/shinyfish",
-  Rrkrr77AmebaowndCOM = "rrkrr77.amebaownd.com",
-  SmartgamecapNet = "smartgamecap.net",
-  TwitterCOMJunsx43Us1Sta = "twitter.com/junsx43us1/sta…",
-  YoutuBeZpwMiYmntWk = "youtu.be/zpwMiYmntWk",
-  YoutubeCOMCSaihateGF = "youtube.com/c/SaihateGF",
-  YoutubeCOMChannelUCEzLM = "youtube.com/channel/UCEzLM…",
-  YoutubeCOMChannelUCbqUO = "youtube.com/channel/UCbqUO…",
-}
-
-export enum LegacyName {
-  ゲームのサイハテ = "ゲームのサイハテ",
 }
 
 export interface ProfileExtensions {
@@ -287,10 +249,6 @@ export interface RGB {
   blue: number;
   green: number;
   red: number;
-}
-
-export enum ScreenName {
-  GFSaihate = "GF_Saihate",
 }
 
 export enum TranslatorType {
@@ -410,28 +368,14 @@ export interface FluffyEntities {
   url?: Description;
 }
 
-export enum CommunityName {
-  アークナイツ = "アークナイツ",
-}
-
 export enum Role {
   Member = "Member",
 }
 
 export interface Rule {
   rest_id: string;
-  name: RuleName;
+  name: string;
   description: string;
-}
-
-export enum RuleName {
-  AvoidDataMiningTweets = "\ud83d\udd34Avoid Data Mining tweets",
-  AvoidExcessiveTweets = "\ud83d\udd34Avoid excessive tweets",
-  OnTopicTweet = "\ud83d\udd35On topic Tweet",
-  PromotionalTweetsOnlyAreProhibited =
-    "\ud83d\udd34Promotional tweets only are prohibited.",
-  RespectOurUsers = "\ud83d\udd35Respect our users",
-  WhatIfIFindASpamTweet = "\ud83d\udd34What if I find a spam tweet?",
 }
 
 export interface ViewerRelationship {
@@ -511,6 +455,7 @@ export interface EXTMediaAvailability {
 
 export enum Status {
   Available = "Available",
+  Unavailable = "Unavailable",
 }
 
 export interface Features {
@@ -582,6 +527,7 @@ export interface PurpleMedia {
 
 export enum Lang {
   Ja = "ja",
+  En = "en",
   Und = "und",
 }
 
