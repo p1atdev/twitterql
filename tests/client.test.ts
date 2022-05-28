@@ -55,6 +55,8 @@ Deno.test("get user tweets and replies", async () => {
     variables: variables,
   });
 
+  console.dir(res, { depth: 10 });
+
   assertExists(res.data.user, "user should exist but it doesn't");
   assertExists(
     res.data.user.result.timeline.timeline.instructions,
