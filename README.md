@@ -2,6 +2,13 @@
 
 The unofficial twitter graphql api sdk.
 
+# Notice
+
+This module is now deprecated. This is because the module was incorrectly designed and was unable to keep up with changes in the API specification.
+**Please use [Whisper](https://github.com/p1atdev/whisper) instead.**
+
+---
+
 # Example
 
 ```ts
